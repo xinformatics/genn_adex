@@ -1,0 +1,25 @@
+##--------------------------------------------------------------------------
+##   Author: Thomas Nowotny
+##  
+##   Institute: Center for Computational Neuroscience and Robotics
+##              University of Sussex
+##              Falmer, Brighton BN1 9QJ, UK 
+##  
+##   email to:  T.Nowotny@sussex.ac.uk
+##  
+##   initial version: 2010-02-07
+##  
+##--------------------------------------------------------------------------
+
+EXECUTABLE		=AdEx_sim.exe
+!IFNDEF CPU_ONLY
+SOURCES			=$(EXECUTABLE:.exe=).cu
+!ELSE
+SOURCES			=$(EXECUTABLE:.exe=)_cpu_only.cc
+!ENDIF
+OPTIMIZATIONFLAGS	=/O2
+
+!INCLUDE $(GENN_PATH)\userproject\include\makefile_common_win.mk
+
+$(EXECUTABLE:.exe=)_cpu_only.cc: $(EXECUTABLE:.exe=).cu
+	copy $(EXECUTABLE:.exe=).cu $(EXECUTABLE:.exe=)_cpu_only.cc
