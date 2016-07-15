@@ -568,7 +568,48 @@ void prepareStandardModels()
   n.dps= NULL;
   nModels.push_back(n);
   IZHIKEVICH_V= nModels.size()-1;
-  
+
+
+//AdEX Model neurons
+  n.varNames.clear();
+  n.varTypes.clear();
+  n.varNames.push_back(tS("V"));
+  n.varTypes.push_back(tS("scalar"));
+  n.varNames.push_back(tS("w"));
+  n.varTypes.push_back(tS("scalar"));
+  n.pNames.clear();
+  n.pNames.push_back(tS("c"));
+  n.pNames.push_back(tS("g_l"));
+  n.pNames.push_back(tS("l_v"));
+  n.pNames.push_back(tS("s_t"));
+  n.pNames.push_back(tS("s_f"));
+  n.pNames.push_back(tS("t_w"));
+  n.pNames.push_back(tS("a"));
+  n.pNames.push_back(tS("b"));
+  n.pNames.push_back(tS("v_r"));
+  n.dpNames.clear();
+  n.simCode = tS("\n\
+		double curr_v = $(V);\n\
+		if ($(V) > 0.0){\n\
+				$(V)=$(v_r);\n\
+				$(w)+=$(b);\n\
+			} \n\
+		else {\n\
+				$(V)+=(($(Isyn) - ($(g_l)*($(V) - $(l_v))) + ($(g_l)*$(s_f)*exp(($(V) - $(s_t)) / $(s_f))) - $(w))/$(c))*DT;\n\
+				$(w)+= ((($(a)*(curr_v - $(l_v))) - $(w)) / $(t_w))*DT; \n\
+				if ($(V) > 30.0){\n\
+					$(V)=30.0;\n\
+				} \n\
+		}\n\
+		");
+  n.thresholdConditionCode = tS("($(V) > 29.99)");
+  n.dps = NULL;
+  nModels.push_back(n);
+  unsigned int ADEX = nModels.size() - 1;
+  // AdEx Model ends
+
+
+
   //Spike Source ("empty" neuron that does nothing - spikes need to be copied in explicitly from host code)
   n.varNames.clear();
   n.varTypes.clear();

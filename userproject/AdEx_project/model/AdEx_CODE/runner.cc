@@ -64,22 +64,41 @@ float t;
 // neuron variables
 unsigned int * glbSpkCntAdEx1;
 unsigned int * glbSpkAdEx1;
+float * sTAdEx1;
 float * VAdEx1;
 float * wAdEx1;
 float * I0AdEx1;
+unsigned int * glbSpkCntAdEx2;
+unsigned int * glbSpkAdEx2;
+float * VAdEx2;
+float * wAdEx2;
+float * I0AdEx2;
 
 // synapse variables
+float * inSynAdEx1AdEx2;
+float * gAdEx1AdEx2;
 
 #include "sparseUtils.cc"
 
 #include "neuronFnct.cc"
+#include "synapseFnct.cc"
 void allocateMem()
 {
 glbSpkCntAdEx1 = new unsigned int[1];
 glbSpkAdEx1 = new unsigned int[1];
+sTAdEx1 = new float[1];
 VAdEx1 = new float[1];
 wAdEx1 = new float[1];
 I0AdEx1 = new float[1];
+
+glbSpkCntAdEx2 = new unsigned int[1];
+glbSpkAdEx2 = new unsigned int[1];
+VAdEx2 = new float[1];
+wAdEx2 = new float[1];
+I0AdEx2 = new float[1];
+
+inSynAdEx1AdEx2 = new float[1];
+gAdEx1AdEx2 = new float[1];
 
 }
 
@@ -99,6 +118,9 @@ void initialize()
         glbSpkAdEx1[i] = 0;
     }
     for (int i = 0; i < 1; i++) {
+        sTAdEx1[i] = -10.0;
+    }
+    for (int i = 0; i < 1; i++) {
         VAdEx1[i] = -70.0000f;
     }
     for (int i = 0; i < 1; i++) {
@@ -107,8 +129,27 @@ void initialize()
     for (int i = 0; i < 1; i++) {
         I0AdEx1[i] = 0.000000f;
     }
+    glbSpkCntAdEx2[0] = 0;
+    for (int i = 0; i < 1; i++) {
+        glbSpkAdEx2[i] = 0;
+    }
+    for (int i = 0; i < 1; i++) {
+        VAdEx2[i] = -70.0000f;
+    }
+    for (int i = 0; i < 1; i++) {
+        wAdEx2[i] = 0.000000f;
+    }
+    for (int i = 0; i < 1; i++) {
+        I0AdEx2[i] = 0.000000f;
+    }
 
     // synapse variables
+    for (int i = 0; i < 1; i++) {
+        inSynAdEx1AdEx2[i] = 0.000000f;
+    }
+    for (int i = 0; i < 1; i++) {
+        gAdEx1AdEx2[i] = 0.000000f;
+    }
 
 
 }
@@ -122,9 +163,17 @@ void initAdEx()
 {
     delete[] glbSpkCntAdEx1;
     delete[] glbSpkAdEx1;
+    delete[] sTAdEx1;
     delete[] VAdEx1;
     delete[] wAdEx1;
     delete[] I0AdEx1;
+    delete[] glbSpkCntAdEx2;
+    delete[] glbSpkAdEx2;
+    delete[] VAdEx2;
+    delete[] wAdEx2;
+    delete[] I0AdEx2;
+    delete[] inSynAdEx1AdEx2;
+    delete[] gAdEx1AdEx2;
 }
 
 void exitGeNN(){
@@ -143,6 +192,7 @@ gennError("Since GeNN 2.2 the call to step time has changed to not take any argu
 // the actual time stepping procedure
 void stepTimeCPU()
 {
+        calcSynapsesCPU(t);
     calcNeuronsCPU(t);
 iT++;
 t= iT*DT;

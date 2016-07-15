@@ -48,6 +48,26 @@ double AdExvar_ini[3] = {
 	0.0	//2 - I0
 };
 
+// synapse parameters
+
+double mySyn_p[3] = {
+	0.0,           // 0 - Erev: Reversal potential
+	-20.0,         // 1 - Epre: Presynaptic threshold potential
+	1.0            // 2 - tau_S: decay time constant for S [ms]
+};
+
+double mySyn_ini[1] = {
+	0.0 //initial values of g
+};
+
+double postExp[2] = {
+	1.0,            // 0 - tau_S: decay time constant for S [ms]
+	0.0		  // 1 - Erev: Reversal potential
+};
+double *postSynV = NULL;
+
+// synapse parameters end-------------------------------------
+
 void modelDefinition(NNmodel &model)
 {
 	initGeNN();
@@ -99,6 +119,9 @@ void modelDefinition(NNmodel &model)
 	nModels.push_back(n);
 	//unsigned int ADEX  = nModels.size() - 1;
 	model.addNeuronPopulation("AdEx1", _NC1, MYADEX, AdEx_p, AdExvar_ini);
+	model.addNeuronPopulation("AdEx2", _NC1, MYADEX, AdEx_p, AdExvar_ini);
+	model.addSynapsePopulation("AdEx1AdEx2", NSYNAPSE, ALLTOALL, INDIVIDUALG, NO_DELAY, IZHIKEVICH_PS, "AdEx1", "AdEx2", mySyn_ini, mySyn_p, postSynV, postExp);
+
 	model.setPrecision(GENN_FLOAT);
 	model.finalize();
 }
