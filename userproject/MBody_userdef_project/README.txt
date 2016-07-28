@@ -48,7 +48,7 @@ this will form new synapse connections and will simulate the model, and voltage 
   
   generate_run 1 100 1000 20 100 0.0025 outname MBody_userdef REUSE=1
   
-  using REUSE=1, we use the preiviously stored synaptic connecting. This is helpful when we want to do a comparative study as this will keep the model structure fixed and same connectivity throughout.
+  using REUSE=1, we use the previously stored synaptic connections. This is helpful when we want to do a comparative study as this will keep the model structure fixed and same connectivity throughout.
 
 Such a command would generate a locust olfaction model with 100
 antennal lobe neurons, 1000 mushroom body Kenyon cells, 20 lateral
