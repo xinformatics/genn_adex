@@ -8,7 +8,9 @@
    email to:  tnowotny@ucsd.edu
   
    initial version: 2002-09-26
-  
+  -----------------------------------------------------------------------
+  Additonal Author: Shashank Yadav, IIT Delhi
+  I implemented the AdEx model for faster simulations
 --------------------------------------------------------------------------*/
 
 #include "AdEx_sim.h"
