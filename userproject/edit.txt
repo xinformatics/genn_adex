@@ -1,1 +1,6 @@
+Even afer updating the CUDA version, sometimes the old verison is not replaced from the PATH. So use the following code to replace the old version with the new one.
+
+Ex: the following code replaces all instances of "5.0" with "7.5" in the PATH, as during writing this program, I had to update the CUDA verison from CUDA 5.0 to CUDA 7.5
+
+
 set PATH=%PATH:5.0=7.5%
