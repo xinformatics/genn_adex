@@ -5,7 +5,7 @@
 This is a minimal example, with only one neuron population (with more or less
 neurons depending on the command line, but without any synapses.)
 
-To compile it, navigate to genn/userproject/OneComp_project and type:
+To compile it, navigate to genn/userproject/AdEx_project and type:
   nmake /f WINmakefile
 for Windows users, or:
   make
@@ -15,7 +15,7 @@ for Linux, Mac and other UNIX users.
   USAGE
   -----
 
-  ./generate_run <0(CPU)/1(GPU)> <n> <DIR> <MODEL>
+  generate_run <0(CPU)/1(GPU)> <n> <DIR> <MODEL>
 
 Optional arguments:
 DEBUG=0 or DEBUG=1 (default 0): Whether to run in a debugger
@@ -25,11 +25,10 @@ CPU_ONLY=0 or CPU_ONLY=1 (default 0): Whether to compile in (CUDA independent) "
 
 For a first minimal test, the system may be used with:
 
-  ./generate_run 1 1 outdir AdEx
+  generate_run 1 1 outdir AdEx
 
-This would create a set of tonic spiking Izhikevich neurons with no connectivity, 
-receiving a constant identical 4 nA input. It is lso possible to use the model
-with a sinusoidal input instead, by setting the input to INPRULE.
+This would create a set of tonic spiking AdEx neurons with no connectivity, 
+receiving a constant identical inpout whose vaule is defined in the "AdEx_sim.cu" file.
 
 Another example of an invocation would be: 
-  ./generate_run 0 1 outdir AdEx FTYPE=DOUBLE CPU_ONLY=1
+  generate_run 0 1 outdir AdEx FTYPE=DOUBLE CPU_ONLY=1
