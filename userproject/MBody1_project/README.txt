@@ -42,8 +42,8 @@ CPU_ONLY=0 or CPU_ONLY=1 (default 0): Whether to compile in (CUDA independent) "
 
 An example invocation of generate_run is:
 
-  ./generate_run 1 100 1000 20 100 0.0025 outname MBody1 REUSE=1
-generate_run 1 100 1000 20 100 0.0025 compare MBody1
+generate_run 1 100 1000 20 100 0.0025 outname MBody1
+
 
 Such a command would generate a locust olfaction model with 100 antennal lobe neurons,
 1000 mushroom body Kenyon cells, 20 lateral horn interneurons and 100 mushroom body
@@ -65,7 +65,7 @@ c) compile the generated code by invoking "make clean && make"
    running the code, e.g. "./classol_sim r1 1".
 
 Another example of an invocation would be: 
-  ./generate_run 0 100 1000 20 100 0.0025 outname MBody1 FTYPE=DOUBLE CPU_ONLY=1
+  generate_run 0 100 1000 20 100 0.0025 outname MBody1 FTYPE=DOUBLE CPU_ONLY=1
 
 for using double precision floating point and compiling and running
 the "CPU only" version.
