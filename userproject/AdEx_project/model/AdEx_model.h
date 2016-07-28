@@ -1,14 +1,16 @@
 /*--------------------------------------------------------------------------
-Author: Shashank
-
-
-
-
-
-
-
-
-
+   Author: Thomas Nowotny
+  
+   Institute: Institute for Nonlinear Dynamics
+              University of California San Diego
+              La Jolla, CA 92093-0402
+  
+   email to:  tnowotny@ucsd.edu
+  
+   initial version: 2002-09-26
+  -----------------------------------------------------------------------
+  Additonal Author: Shashank Yadav, IIT Delhi
+  I implemented the AdEx model for faster simulations
 --------------------------------------------------------------------------*/
 
 
