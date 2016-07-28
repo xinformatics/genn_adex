@@ -1,17 +1,17 @@
-﻿/*--------------------------------------------------------------------------
+/*--------------------------------------------------------------------------
    Author: Thomas Nowotny
   
-   Institute: Center for Computational Neuroscience and Robotics
-              University of Sussex
-	      Falmer, Brighton BN1 9QJ, UK 
+   Institute: Institute for Nonlinear Dynamics
+              University of California San Diego
+              La Jolla, CA 92093-0402
   
-   email to:  T.Nowotny@sussex.ac.uk
+   email to:  tnowotny@ucsd.edu
   
    initial version: 2010-02-07
-  
+  -----------------------------------------------------------------------
+  Additonal Author: Shashank Yadav, IIT Delhi
+  I implemented the AdEx model for faster simulations
 --------------------------------------------------------------------------*/
-
-//--------------------------------------------------------------------------
 /*! \file MBody_userdef.cc
 
 \brief This file contains the model definition of the mushroom body model.
