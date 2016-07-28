@@ -3,8 +3,13 @@
   ========================================================================
 
 This examples recapitulates the exact same model as MBody1_project,
-but with user-defined model types for neurons and synapses. Also
-sparse connectivity is used instead of dense. The way user-defined
+but with user-defined model types for neurons and synapses. 
+
+The current implementation uses AdEx model for dynamics of Kenyon Cells in the mushroom body. The model type being used for different neurons can be changed in the modle file by using the name of the model definition with the parameter arrays
+
+
+
+Also sparse connectivity is used instead of dense. The way user-defined
 types are used should be very instructive to advanced users wishing
 to do the same with their models. This example project contains a
 helper executable called "generate_run", which also prepares
