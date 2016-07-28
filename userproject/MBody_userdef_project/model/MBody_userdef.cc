@@ -10,7 +10,9 @@
    initial version: 2010-02-07
   -----------------------------------------------------------------------
   Additonal Author: Shashank Yadav, IIT Delhi
-  I implemented the AdEx model for faster simulations
+  I implemented the AdEx model for faster simulations, here only the KC neurons
+  uses AdEx model and other neurons such as the LHIs and DNs use the Traubmiles
+  Implememtation of Hodgkin-Huxley Neurons
 --------------------------------------------------------------------------*/
 /*! \file MBody_userdef.cc
 
