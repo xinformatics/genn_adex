@@ -41,8 +41,14 @@ CPU_ONLY=0 or CPU_ONLY=1 (default 0): Whether to compile in (CUDA independent) "
 
 An example invocation of generate_run is:
 
-  ./generate_run 1 100 1000 20 100 0.0025 outname MBody_userdef REUSE=1
-generate_run 1 100 1000 20 100 0.0025 compare MBody_userdef REUSE=1
+  generate_run 1 100 1000 20 100 0.0025 outname MBody_userdef
+
+this will form new synapse connections and will simulate the model, and voltage traces will be stores in "outdir.outname" folder
+  
+  
+  generate_run 1 100 1000 20 100 0.0025 outname MBody_userdef REUSE=1
+  
+  using REUSE=1, we use the preiviously stored synaptic connecting. This is helpful when we want to do a comparative study as this will keep the model structure fixed and same connectivity throughout.
 
 Such a command would generate a locust olfaction model with 100
 antennal lobe neurons, 1000 mushroom body Kenyon cells, 20 lateral
@@ -62,7 +68,7 @@ c) compile the generated code by invoking "make clean && make"
    running the code, e.g. "./classol_sim r1 1".
 
 Another example of an invocation would be: 
-  ./generate_run 0 100 1000 20 100 0.0025 outname MBody_userdef FTYPE=DOUBLE CPU_ONLY=1
+  generate_run 0 100 1000 20 100 0.0025 outname MBody_userdef FTYPE=DOUBLE CPU_ONLY=1
 
 
   MODEL INFORMATION
